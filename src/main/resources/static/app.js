@@ -17,9 +17,10 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
-        console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+        // console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/greetings/1', function (greeting) {
+            // console.log(JSON.parse(greeting.body).name);
+            showGreeting(JSON.parse(greeting.body).name);
         });
     });
 }
